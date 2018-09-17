@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><?php $this->vw('name'); ?></title>
+    <?php $this->extend('head_vendors'); ?>
+
+</head>
+<body class="container-fluid d-flex flex-column">
+    <?php $this->extend('header'); ?>
+
+    <div class="row mt-5 flex-grow-1">
+
+    <div class="col-sm-6 d-flex align-items-center flex-column">
+
+        <h5 class="mb-4">Buscar año y sección:</h5>
+
+        <form action="#" method="post" class="w-50">
+        
+            <select name="" class="form-control" id="">
+                <option value="">Primer grado</option>
+                <option value="">Segundo grado</option>
+                <option value="">Tercer grado</option>
+                <option value="">Cuarto grado</option>
+                <option value="">Quinto grado</option>
+                <option value="">Sexto grado</option>
+            </select>
+            <p class="text-center mt-3">- y -</p>
+            <select name="" class="form-control" id="">
+                <option value="">Turno: Mañana</option>
+                <option value="">Turno: Tarde</option>
+            </select>
+            <p class="text-center mt-3">- y -</p>
+            <input type="number" max="20" class="form-control" placeholder="Número de sección">
+            <hr>
+
+            <button type="submit" class="btn btn-block btn-primary">Buscar</button>
+        </form>
+    </div>
+    <div class="col-sm-6"></div>
+
+    </div>
+
+    <?php $this->extend('scripts_vendors'); ?>
+</body>
+</html>

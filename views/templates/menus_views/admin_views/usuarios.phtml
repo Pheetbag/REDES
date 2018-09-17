@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><?php $this->vw('name'); ?></title>
+    <?php $this->extend('head_vendors'); ?>
+
+</head>
+<body class="container-fluid d-flex flex-column">
+    <?php $this->extend('header'); ?>
+
+    <div class="row mt-5 flex-grow-1">
+
+    <div class="col-sm-6">
+
+
+        <div class="card mx-5">
+        <h6 class="card-header">Usuarios</h6>
+        <div class="list-group">
+
+        <?php 
+
+        if(isset($this->vw['userList']) AND $this->vw['userList'] != null ):
+        foreach ($this->vw['userList'] as $estudiante): 
+          
+        ?>
+
+            <div class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    <b><?php echo $estudiante['nombre']; ?> <?php echo $estudiante['apellido']; ?></b>
+                    <br>
+                    Usuario: <?php echo $estudiante['usuario'] ?>
+                    <br>
+                    
+                    <?php
+
+                    switch ($estudiante['rango']) {
+                        case '1':
+                        $estudiante['rango'] = 'Administrador'; 
+                        break;
+                        
+                        case '2':
+                        $estudiante['rango'] = 'Analista'; 
+                        break;
+                        
+                        case '3':
+                        $estudiante['rango'] = 'Espectador'; 
+                        break;
+                    }
+                    ?>
+
+                    Rango: <?php echo $estudiante['rango'] ?>
+                </div>
+                <div class="col">
+                    <a href="<?php echo HTTP . '/admin/eliminar-usuario?id=' .  $estudiante['id'] ?>" class="btn btn-danger">Eliminar</a>
+                </div>
+                </div>
+            </div>
+            <hr>
+
+        <?php 
+        endforeach;
+        else:
+        ?>
+
+        <b class="text-center my-5">No se han encontrado resultados</b>
+        <?php endif; ?>
+        </div>
+        </div>
+
+    </div>
+    <div class="col-sm-6 d-flex align-items-center flex-column">
+
+            <h5 class="mb-4">Registrar usuario:</h5>
+
+            <form action="<?php $this->url('admin/nuevo-usuario') ?>" method="post" class="w-50">
+            
+                <input class="form-control mb-3" type="text" name="nombre"  placeholder="Nombre">
+                <input class="form-control mb-3" type="text" name="apellido"  placeholder="Apellido">
+                <input class="form-control mb-3" type="text" name="usuario"  placeholder="Usuario">
+                <input class="form-control mb-3" type="password" name="contra"  placeholder="Contraseña">
+                <p>Rango:</p>
+                <select name="rango" class="form-control mb-3" id="">
+                    <option value="1">Administrador</option>
+                    <option value="2">Analista</option>
+                    <option value="3">Espectador</option>
+                </select>
+                <hr>
+                <button type="submit" class="btn btn-block btn-primary">Registrar</button>
+            </form>
+        </div>
+    </div>
+
+    <?php $this->extend('scripts_vendors'); ?>
+</body>
+</html>

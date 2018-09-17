@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <?php $this->vendor('ico/png', 'logos/redes_logo_black'); ?>
+    <title><?php $this->vw('name'); ?></title>
+    <?php $this->vendor('css', 'bootstrap/css/bootstrap.min'); ?>
+    <?php $this->vendor('css', 'css/setup'); ?>
+    <?php $this->vendor('css', 'css/layout'); ?>
+    <?php $this->vendor('css', 'css/menu'); ?>
+</head>
+<body class="container-fluid d-flex flex-column">
+
+
+    <?php $this->extend('header'); ?>
+    
+    <div class="row flex-grow-1">
+        <div class="col-sm-4 d-flex align-items-center justify-content-center">
+            <a href="<?php $this->url('consultas'); ?>" class="card-ui">
+                <div class="header first"></div>
+                <h4>Consultas</h4>
+            </a>
+        </div>
+        <?php if( $_SESSION[APP_CONFIG['session.name']][APP_CONFIG['session.permission']] < 3 AND $this->vw['inscripcion'] == true): ?>
+        <div class="col-sm-4 d-flex align-items-center justify-content-center">
+            <a href="<?php $this->url('inscripciones'); ?>" class="card-ui">
+                <div class="header second"></div>
+                <h4>Inscripciones</h4>
+            </a>
+        </div>
+        <?php endif; ?>
+        <?php if( $_SESSION[APP_CONFIG['session.name']][APP_CONFIG['session.permission']] == 1 ): ?>
+        <div class="col-sm-4 d-flex align-items-center justify-content-center">
+            <a href="<?php $this->url('admin'); ?>" class="card-ui">
+                <div class="header third"></div>
+                <h4>Administración</h4>
+            </a>
+        </div>
+
+        <?php endif; ?>
+    </div>
+
+    <?php $this->vendor('js', 'jquery.min'); ?>
+    <?php $this->vendor('js', 'popper.min'); ?>
+    <?php $this->vendor('js', 'bootstrap/js/bootstrap.min'); ?>
+
+</body>
+</html>

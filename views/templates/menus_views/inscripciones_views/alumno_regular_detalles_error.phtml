@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><?php $this->vw('name'); ?></title>
+    <?php $this->extend('head_vendors'); ?>
+
+</head>
+<body class="container-fluid d-flex flex-column">
+    <?php $this->extend('header'); ?>
+
+    <div class="row mt-5 flex-grow-1">
+
+    <div class="col-sm-6 d-flex align-items-center flex-column">
+
+        <div class="alert alert-warning" role="alert">
+        Este estudiante ya está matriculado para este año
+        </div>
+    </div>
+    <div class="col-sm-6">
+
+        <div class="card">
+            <h6 class="card-header">Información del estudiante</h6>
+            <div class="card-body">
+                <b><?php $this->vw('std', 'nombre'); ?> <?php $this->vw('std', 'apellido'); ?></b>
+                <hr>
+                <b>Cédula escolar: </b> <?php $this->vw('std', 'ci_escolar'); ?>
+                <br>
+                <b>Edad: </b> <?php $this->vw('std', 'edad'); ?> años
+            </div>
+        </div>
+    
+    </div>
+
+    </div>
+
+    <?php $this->extend('scripts_vendors'); ?>
+</body>
+</html>

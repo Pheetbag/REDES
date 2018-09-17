@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><?php $this->vw('name'); ?></title>
+    <?php $this->extend('head_vendors'); ?>
+
+</head>
+<body class="container-fluid d-flex flex-column">
+    <?php $this->extend('header'); ?>
+
+    <div class="row mt-5 flex-grow-1">
+
+    <div class="col-sm-6 d-flex align-items-center flex-column">
+
+        <h5 class="mb-4">Información de la inscripción:</h5>
+
+        <form action="<?php $this->url('inscripciones/alumno-regular/matricular'); ?>" method="post" class="w-50">
+        <input type="hidden" name="estudiante" value="<?php echo $_GET['id'] ?>">
+            <input type="hidden" name="grado_anterior" value="<?php $this->vw('mat', 'grado'); ?>">
+            <div class="form-group">
+                <label for="">Turno</label>
+                <select class="form-control"  name="turno" id="" placeholder="Cédula escolar">
+                    <option value="mañana">Mañana</option>
+                    <option value="tarde">Tarde</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">Grado a inscribir</label>
+                <select class="form-control"  name="grado" placeholder="Cédula escolar">
+
+                <?php for ($i= $this->vw['mat']['grado']; $i <= 6; $i++): ?>
+                    <option value="<?php echo $i ?>"><?php $this->vw('mat_text', $i-1); ?> grado</option>
+                <?php endfor; ?>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">Certificación de notas aprobadas</label>
+                <select class="form-control"  name="notas" id="" placeholder="Cédula escolar">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+
+            <hr>
+
+            <button type="submit" class="btn btn-block btn-primary">Inscribir</button>
+
+        <?php if(isset($_GET['err'])): ?>
+        <div class="alert alert-warning mt-4" role="alert">
+        No se puede inscribir el siguiente grado con una calificación inferior a la "C".
+        </div>
+
+        <?php endif; ?>
+        </form>
+    </div>
+    <div class="col-sm-6">
+
+        <div class="card">
+            <h6 class="card-header">Información del estudiante</h6>
+            <div class="card-body">
+                <b><?php $this->vw('std', 'nombre'); ?> <?php $this->vw('std', 'apellido'); ?></b>
+                <hr>
+                <b>Cédula escolar: </b> <?php $this->vw('std', 'ci_escolar'); ?>
+                <br>
+                <b>Edad: </b> <?php $this->vw('std', 'edad'); ?> años
+            </div>
+        </div>
+    
+    </div>
+
+    </div>
+
+    <?php $this->extend('scripts_vendors'); ?>
+</body>
+</html>

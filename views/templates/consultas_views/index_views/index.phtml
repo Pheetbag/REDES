@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><?php $this->vw('name'); ?></title>
+    <?php $this->extend('head_vendors'); ?>
+</head>
+<body class="container-fluid d-flex flex-column">
+
+
+    <?php $this->extend('header'); ?>
+    
+    <div class="row flex-grow-1 justify-content-around">
+        <div class="col-sm-4 d-flex align-items-center justify-content-center">
+            <a href="<?php $this->url('consultas/estudiante'); ?>" class="card-ui card-ui-sm">
+                <div class="header first"></div>
+                <h4>Estudiante</h4>
+            </a>
+        </div>
+        <div class="col-sm-4 d-flex align-items-center justify-content-center">
+        <a href="<?php $this->url('consultas/anio-seccion'); ?>" class="card-ui card-ui-sm">
+                <div class="header first"></div>
+                <h4>Año y sección</h4>
+            </a>
+        </div>
+    </div>
+
+    <?php $this->vendor('js', 'jquery.min'); ?>
+    <?php $this->vendor('js', 'popper.min'); ?>
+    <?php $this->vendor('js', 'bootstrap/js/bootstrap.min'); ?>
+
+</body>
+</html>

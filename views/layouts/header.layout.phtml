@@ -1,0 +1,17 @@
+<div class="row">
+    <a href="<?php $this->url('home'); ?>" class="col-sm-2 logotipo">
+        <div class="logo"></div>
+        <div class="name">Redes</div>
+    </a>
+    <div class="col-sm-8 message">
+        <div class="text"><?php $this->ly('page_name'); ?></div>
+    </div>
+    <div class="col-sm-2 select-bar dropdown">
+        <a class="button font-weight-bold" id="userMenu" data-toggle="dropdown" style="color: rgb(89,217,164);"><?php echo $_SESSION['user']['name'][0] ?></a>
+        <div class="dropdown-menu" aria-labelledby="userMenu">
+            <!--a class="dropdown-item" href="#">Action</a-->
+            <!--a class="dropdown-item" href="#">Another action</a-->
+            <a class="dropdown-item" href="<?php $this->url('logout'); ?>">Salir</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <?php $this->vendor('ico/png', 'logos/redes_logo_black'); ?>
+    <title><?php $this->vw('name'); ?></title>
+    <?php $this->vendor('css', 'bootstrap/css/bootstrap.min'); ?>
+    <?php $this->vendor('css', 'css/setup'); ?>
+    <?php $this->css(); ?>
+</head>
+<body>
+
+    <div class="main container sidebox">
+        <div class="row sidebox">
+            <div class="sidebox col-sm-6">
+                <div class="left-box d-flex flex-column justify-content-between">
+                    <div class="logotipo">
+                        <span class="img mr-2"></span>
+                        <div class="name">Redes</div>
+                    </div>
+
+                    <div class="caption">
+                        Registro de data estudiantil.
+                    </div>
+                </div>
+            </div>
+            <div class="sidebox col-sm-6 d-flex flex-column align-items-center justify-content-center">
+                <h2 class="title mb-5">Iniciar Sesión</h2>
+                <form action="<?php $this->url('login'); ?>" method="POST" class="fields">
+                    <div class="field mb-4">
+                        <div class="field-ico ico-id"></div>
+                        <input required type="text" name="username" placeholder="Usuario" class="data-field">
+                    </div>
+                    <div class="field mb-5">
+                        <div class="field-ico ico-pass"></div>
+                        <input required type="password" placeholder="Contraseña" name="password" class="data-field">
+                    </div>
+                    <button class="p-3 btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+    <?php $this->vendor('js', 'jquery.min'); ?>
+    <?php $this->vendor('js', 'popper.min'); ?>
+    <?php $this->vendor('js', 'bootstrap/js/bootstrap.min'); ?>
+
+</body>
+</html>

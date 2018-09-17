@@ -1,0 +1,113 @@
+
+body{
+
+    padding: 40px;
+}
+
+.sidebox{
+
+    height: 100%;
+}
+
+.left-box{
+    
+    height: 100%;
+    border-radius: 15px 0 0 15px;
+    background-color: rgb(89,217,164);
+}
+
+.left-box .logotipo{
+
+    padding: 10px; 
+    display: flex;
+    justify-items: center;
+}
+
+.left-box .logotipo .name{
+
+    padding-top: 10px;
+    font-weight: 600;
+    color: white;
+    font-size: 20px; 
+    vertical-align: center;
+}
+
+.left-box .logotipo .img{
+
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background-image: url('/views/vendors/logos/redes_logo_white.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat; 
+    
+}
+
+.left-box .caption{
+
+    font-size: 22px; 
+    color: white;
+    font-weight: 300;
+    padding: 35px 15px;
+}
+
+.title{
+
+    color: rgb(56, 65, 78);
+    font-weight: 400;
+}
+
+.fields{
+    
+    width: 80%;
+    max-width: 350px;
+}
+
+.field{
+
+    width: 100%;
+    height: 60px;
+    border-radius: 7px; 
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.field-ico{
+
+    width: 35px;
+    height: 35px;
+    background-color: rgb(232, 243, 245);
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.ico-id{
+    background-image: url('/views/vendors/icos/id-card.svg');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.ico-pass{
+    background-image: url('/views/vendors/icos/lock.svg');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;  
+}
+
+.data-field{
+
+    flex-grow: 1;
+    border: 0;
+    border-radius: 7px; 
+    height: 100%;
+    font-size: 18px;
+}
+
+.data-field::placeholder{
+
+    text-align: center;
+    font-size: 15px;
+}

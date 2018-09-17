@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><?php $this->vw('name'); ?></title>
+    <?php $this->extend('head_vendors'); ?>
+    <?php $this->css(); ?>
+</head>
+<body class="container-fluid d-flex flex-column">
+    <?php $this->extend('header'); ?>
+
+    <form method="POST" action="<?php $this->url('inscripciones/nuevo-ingreso/registrar'); ?>" class="row mt-5 flex-grow-1">
+        <div class="col-sm-4">
+
+            <ul class="list-group" id="navbar">
+                <a class="list-group-item" data-toggle="collapse" href="#primero">Datos personales del alumno</a>
+                <a class="list-group-item" data-toggle="collapse" href="#segundo">Aspectos fisicos y de salud</a>
+                <a class="list-group-item" data-toggle="collapse" href="#tercero">Datos del representante</a>
+                <a class="list-group-item" data-toggle="collapse" href="#cuarto">Datos familiares</a>
+                <a class="list-group-item" data-toggle="collapse" href="#quinto">Situación familiar</a>
+                <a class="list-group-item" data-toggle="collapse" href="#sexto">Documentación</a>
+				<a class="list-group-item" data-toggle="collapse" href="#septimo">Inscripción</a>
+            </ul>
+
+            <button type="submit" class="btn btn-block btn-primary mt-4">Registrar</button>
+
+        </div>
+        <div class="col-sm-8" id="accordion">
+
+            <div class="card card-body">
+            
+                <div class="first collapse show" data-parent="#accordion" id="primero">
+                
+                                    
+                                    <div class="row">
+
+                                        <div class="col form-group">
+                                            <label for="">Nombre</label>
+                                            <input required pattern="[a-zA-ZÀ-ÿñÑ]+( *[a-zA-ZÀ-ÿñÑ]*)*" name="nombre_estudiante" class="form-control" type="text">
+                                        </div>
+                                        <div class="col form-group">
+                                            <label for="">Apellido</label>
+                                            <input required pattern="[a-zA-ZÀ-ÿñÑ]+( *[a-zA-ZÀ-ÿñÑ]*)*" name="apellido_estudiante" class="form-control" type="text">
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col form-group">
+                                            <label for="">Edad</label>
+                                            <input required min="0" max="15" name="edad_estudiante" class="form-control" type="number">
+                                        </div>
+                                        <div class="col form-group">
+                                            <label for="">Nacimiento</label>
+                                            <input required name="nacimiento_estudiante" class="form-control" type="date">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="">Lugar de nacimiento</label>
+                                        <input required name="nacimiento_lugar_estudiante" class="form-control" type="text">
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col form-group">
+                                            <label for="">Género</label>
+                                            <select required class="form-control" name="sexo_estudiante">
+                                                <option value="f">Femenino</option>
+                                                <option value="m">Masculino</option>
+                                            </select>
+                                        </div>
+                                        <div class="col form-group">
+                                            <label for="">Cédula</label>
+                                            <input name="cedula_estudiante" class="form-control" type="number">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="">Dirección</label>
+                                        <input required name="direccion_estudiante" class="form-control" type="text">
+                                    </div>
+
+                </div>
+
+
+                <div class="second collapse" data-parent="#accordion" id="segundo">
+                
+                                    <label for="">Vacunas recibidas</label>
+
+									  <div class="row">
+									  	<div class="col">
+
+											<div class="form-check">
+											  <input class="form-check-input" name="vacunas[]" type="checkbox" value="polio" id="defaultCheck5">
+											  <label class="form-check-label" for="defaultCheck5">
+											    Polio
+											  </label>
+											</div>
+											<div class="form-check">
+											  <input class="form-check-input" name="vacunas[]" type="checkbox" value="triple" id="defaultCheck6">
+											  <label class="form-check-label" for="defaultCheck6">
+												Triple
+											  </label>
+											</div>
+											<div class="form-check">
+											  <input class="form-check-input" name="vacunas[]" type="checkbox" value="tetano" id="defaultCheck7">
+											  <label class="form-check-label" for="defaultCheck7">
+												Tetano
+											  </label>
+											</div>
+											<div class="form-check">
+											  <input class="form-check-input" name="vacunas[]" type="checkbox" value="rubeola" id="defaultCheck8">
+											  <label class="form-check-label" for="defaultCheck8">
+												Rubeola
+											  </label>
+											</div>
+											<div class="form-check">
+											  <input class="form-check-input" name="vacunas[]" type="checkbox" value="hepatitis" id="defaultCheck9">
+											  <label class="form-check-label" for="defaultCheck9">
+												Hepatitis
+											  </label>
+											</div>
+									  	</div>
+									  	<div class="col">
+
+											<div class="form-check">
+											  <input class="form-check-input" name="vacunas[]" type="checkbox" value="bcg" id="defaultCheck1">
+											  <label class="form-check-label" for="defaultCheck1">
+												BCG
+											  </label>
+											</div>
+											<div class="form-check">
+											  <input class="form-check-input" name="vacunas[]" type="checkbox" value="sarampión" id="defaultCheck2">
+											  <label class="form-check-label" for="defaultCheck2">
+												Sarampión
+											  </label>
+											</div>
+											<div class="form-check">
+											  <input class="form-check-input" name="vacunas[]" type="checkbox" value="meningitis" id="defaultCheck3">
+											  <label class="form-check-label" for="defaultCheck3">
+												Meningitis
+											  </label>
+											</div>
+											<div class="form-check">
+											  <input class="form-check-input" name="vacunas[]" type="checkbox" value="fiebre amarilla" id="defaultCheck4">
+											  <label class="form-check-label" for="defaultCheck4">
+												Fiebre amarilla
+											  </label>
+											</div>
+									  	</div>
+									  </div>
+
+									  <hr>
+
+									  <div class="row">
+									  	<div class="col">
+
+											<label>
+	  										¿Entregó tarjeta de vacunas?
+	  									  </label>
+
+									  	</div>
+									  	<div class="col">
+
+
+											<div class="form-check-inline">
+												<input class="form-check-input" type="radio" name="vacunas_tarjeta" value="1" required checked>
+												<label class="form-check-label" for="exampleRadios1">
+													Si
+												</label>
+											</div>
+											<div class="form-check-inline">
+												<input class="form-check-input" type="radio" name="vacunas_tarjeta" value="0">
+												<label class="form-check-label" for="exampleRadios1">
+													No
+												</label>
+											</div>
+
+
+									  	</div>
+									  </div>
+
+									  	<hr>
+
+									  <div class="row">
+									  	<div class="col">
+
+											<label>
+	  										El parto fue:
+	  									  </label>
+
+									  	</div>
+										<div class="col form-group">
+											<select class="form-control" name="tipo_parto">
+												<option value="natural">Natural</option>
+												<option value="forceps">Forceps</option>
+												<option value="cesárea">Cesárea</option>
+												<option value="antes de tiempo">Antes de tiempo</option>
+												<option value="A termino">A termino</option>
+											</select>
+										</div>
+									  </div>
+
+
+									  <div class="row">
+
+  										  <div class="col form-group">
+  											  <label for="">Enfermedades que padece</label>
+  											  <textarea required name="enfermedades_padece" class="form-control" rows="3"></textarea>
+  										  </div>
+  										  <div class="col form-group">
+  											  <label for="">Enfermedades padecidas</label>
+  											  <textarea required name="enfermedades_padecidas" class="form-control" rows="3"></textarea>
+  										  </div>
+									  </div>
+
+									  <div class="row">
+
+  										  <div class="col form-group">
+  											  <label for="">Operaciones</label>
+  											  <textarea name="operaciones" required class="form-control" rows="3"></textarea>
+  										  </div>
+  										  <div class="col form-group">
+  											  <label for="">Limitaciones fisicas</label>
+  											  <textarea name="limitaciones_fisicas" class="form-control" rows="3"></textarea>
+  										  </div>
+									  </div>
+
+
+									  <hr>
+
+									  <div class="row">
+									  	<div class="col">
+
+											<label>
+	  										¿Usa lentes?
+	  									  </label>
+
+									  	</div>
+									  	<div class="col">
+
+
+											<div class="form-check-inline">
+												<input class="form-check-input" type="radio" name="lentes" value="1" checked>
+												<label class="form-check-label" for="exampleRadios1">
+													Si
+												</label>
+											</div>
+											<div class="form-check-inline">
+												<input class="form-check-input" type="radio" name="lentes" value="0">
+												<label class="form-check-label" for="exampleRadios1">
+													No
+												</label>
+											</div>
+
+
+									  	</div>
+									  </div>
+
+									  <hr>
+
+									  <div class="row">
+
+  										  <div class="col form-group">
+  											  <label for="">Deficiencias visuales</label>
+  											  <textarea required name="deficiencias_visuales" class="form-control" rows="3"></textarea>
+  										  </div>
+  										  <div class="col form-group">
+  											  <label for="">Deficiencias auditivas</label>
+  											  <textarea required name="deficiencias_auditivas" class="form-control" rows="3"></textarea>
+  										  </div>
+									  </div>
+
+
+									  <div class="row">
+
+  										  <div class="col form-group">
+  											  <label for="">¿Como es su salud?</label>
+  											  <textarea required name="estado_salud" class="form-control" rows="3"></textarea>
+  										  </div>
+  										  <div class="col form-group">
+  											  <label for="">Medicamentos en caso de fiebre</label>
+  											  <textarea required name="medicamentos_fiebre" class="form-control" rows="3"></textarea>
+  										  </div>
+									  </div>
+
+									  <div class="row">
+
+											  <div class="col">
+												  <label for="">¿Es alergico a algo?</label>
+											  </div>
+											  <div class="col form-group">
+												  <input required class="form-control" type="text" name="alergias">
+											  </div>
+									  </div>
+
+									  <div class="row">
+									  	<div class="col">
+
+											<label>
+	  										¿Usa protesis?
+	  									  </label>
+
+									  	</div>
+									  	<div class="col">
+
+
+											<div class="form-check-inline">
+												<input class="form-check-input" type="radio" name="protesis" value="1" checked>
+												<label class="form-check-label" for="exampleRadios1">
+													Si
+												</label>
+											</div>
+											<div class="form-check-inline">
+												<input class="form-check-input" type="radio" name="protesis" value="0" checked>
+												<label class="form-check-label" for="exampleRadios1">
+													No
+												</label>
+											</div>
+
+
+									  	</div>
+									  </div>
+
+
+                
+                
+                </div>
+                <div class="second collapse" data-parent="#accordion" id="tercero">
+
+                                        <div class="row d-flex flex-column mb-3">
+
+                                        <label data-toggle="collapse" data-target=".multi-collapse">
+                                            <input type="checkbox" name="representante_padres" /> El representante no es el padre o la madre
+                                        </label>
+
+                                        </div>
+    <hr>
+
+										<div class="collapse show multi-collapse" id="representante_madre_collapse">
+
+												<div class="row">
+                                                   
+												   <div class="col">
+												   ¿Cual de los padres será el representante de el estudiante?
+												   </div>
+											   </div>
+
+											   <hr>
+                                                <div class="row">
+
+                                                <div class="col form-group">
+													<select class="form-control" name="representante" id="">
+														<option value="padre">Padre</option>
+														<option value="madre">Madre</option>
+													</select>
+
+                                                </div>
+												</div>
+
+										</div>
+
+                                        <div class="collapse multi-collapse" id="representante_collapse">
+                                                
+                                                <div class="row">
+                                                   
+                                                    <div class="col">Ingrese los datos de el representante de el estudiante.</div>
+                                                </div>
+                                        
+                                                    <hr>
+                                                <div class="row">
+
+                                                <div class="col form-group">
+                                                    <label for="">Nombre</label>
+                                                    <input pattern="[a-zA-ZÀ-ÿñÑ]*( *[a-zA-ZÀ-ÿñÑ]*)*" name="nombre_representante" class="form-control" type="text">
+                                                </div>
+                                                <div class="col form-group">
+                                                    <label for="">Apellido</label>
+                                                    <input pattern="[a-zA-ZÀ-ÿñÑ]*( *[a-zA-ZÀ-ÿñÑ]*)*" name="apellido_representante" class="form-control" type="text">
+                                                </div>
+
+                                                </div>
+                                                <div class="row">
+
+                                                <div class="col form-group">
+                                                    <label for="">Edad</label>
+                                                    <input min="0" max="100" name="edad_representante" class="form-control" type="number">
+                                                </div>
+                                                <div class="col form-group">
+                                                    <label for="">Género</label>
+                                                    <select class="form-control" name="sexo_representante">
+                                                        <option value="F">Femenino</option>
+                                                        <option value="M">Masculino</option>
+                                                    </select>
+                                                </div>
+
+
+                                                </div>
+
+                                                <div class="row">
+
+                                                <div class="col form-group">
+                                                    <label for="">Cédula</label>
+                                                    <input name="cedula_representante" class="form-control" type="number">
+                                                </div>
+                                                <div class="col form-group">
+                                                    <label for="">Teléfono</label>
+                                                    <input name="telefono_representante" class="form-control" type="text">
+                                                </div>
+
+
+                                                </div>
+
+                                                <div class="row">
+
+                                                <div class="col form-group">
+                                                    <label for="">Dirección</label>
+                                                    <input name="direccion_representante" class="form-control" type="text">
+                                                </div>
+                                                <div class="col form-group">
+                                                    <label for="">Lugar de nacimiento</label>
+                                                    <input name="lugar_nacimiento_representante" class="form-control" type="text">
+                                                </div>
+
+
+                                                </div>
+
+                                                <div class="row">
+
+                                                <div class="col form-group">
+                                                    <label for="">Parentesco</label>
+                                                    <input name="parentesco_representante" class="form-control" type="text">
+                                                </div>
+                                                <div class="col form-group">
+                                                    <label for="">Ocupación</label>
+                                                    <input name="ocupacion_representante" class="form-control" type="text">
+                                                </div>
+
+
+                                                </div>
+                                        </div>
+
+
+
+
+                </div>
+
+                <div class="second collapse" data-parent="#accordion" id="cuarto">
+                
+
+
+
+
+									  <h6 class="text-center">Madre</h6>
+									  <hr>
+
+									  <div class="row">
+
+										  <div class="col form-group">
+											  <label for="">Nombre</label>
+											  <input pattern="[a-zA-ZÀ-ÿñÑ]*( *[a-zA-ZÀ-ÿñÑ]*)*" required name="nombre_madre" class="form-control" type="text">
+										  </div>
+										  <div class="col form-group">
+											  <label for="">Apellido</label>
+											  <input pattern="[a-zA-ZÀ-ÿñÑ]*( *[a-zA-ZÀ-ÿñÑ]*)*" required name="apellido_madre" class="form-control" type="text">
+										  </div>
+
+									  </div>
+									  <div class="row">
+
+										  <div class="col form-group">
+											  <label for="">Edad</label>
+											  <input min="0" max="100" required name="edad_madre" class="form-control" type="number">
+										  </div>
+
+										  <div class="col form-group">
+											  <label for="">Ocupación</label>
+											  <input required name="ocupacion_madre" class="form-control" type="text">
+										  </div>
+
+										  <div class="col form-group sr-only">
+											  <label for="">Género</label>
+											  <select class="form-control" name="sexo_madre">
+											  	<option selected value="F">Femenino</option>
+											  	<option value="M">Masculino</option>
+											  </select>
+										  </div>
+
+
+									  </div>
+
+									  <div class="row">
+
+										  <div class="col form-group">
+											  <label for="">Cédula</label>
+											  <input required name="cedula_madre" class="form-control" type="number">
+										  </div>
+										  <div class="col form-group">
+											  <label for="">Teléfono</label>
+											  <input required name="telefono_madre" class="form-control" type="text">
+										  </div>
+
+
+									  </div>
+
+									  <div class="row">
+
+										  <div class="col form-group">
+											  <label for="">Nivel de introducción</label>
+											  <input required  name="introduccion_madre" class="form-control" type="text">
+										  </div>
+										  <div class="col form-group">
+											  <label for="">Lugar de trabajo</label>
+											  <input required name="trabajo_madre" class="form-control" type="text">
+										  </div>
+
+
+									  </div>
+
+										<div class="row">
+										
+											<div class="col form-group">
+												<label for="">Lugar de nacimiento</label>
+												<input required name="nacimiento_madre" class="form-control" type="text">
+											</div>
+
+											<div class="col form-group">
+												<label for="">Dirección</label>
+												<input required name="dir_madre" class="form-control" type="text">
+											</div>
+										</div>
+
+									  <div class="row">
+									  	<div class="col">
+
+											<label>
+	  										¿Vive con el niño?
+	  									  </label>
+
+									  	</div>
+									  	<div class="col">
+
+
+											<div class="form-check-inline">
+												<input class="form-check-input" type="radio" name="vive_con_madre" value="1" checked>
+												<label class="form-check-label" for="exampleRadios1">
+													Si
+												</label>
+											</div>
+											<div class="form-check-inline">
+												<input rclass="form-check-input" type="radio" name="vive_con_madre" value="0" checked>
+												<label class="form-check-label" for="exampleRadios1">
+													No
+												</label>
+											</div>
+
+
+									  	</div>
+									  </div>
+
+
+									  <br>
+									  <h6 class="text-center">Padre</h6>
+									  <hr>
+
+
+
+  									  <div class="row">
+
+  										  <div class="col form-group">
+  											  <label for="">Nombre</label>
+  											  <input pattern="[a-zA-ZÀ-ÿñÑ]*( *[a-zA-ZÀ-ÿñÑ]*)*" required name="nombre_padre" class="form-control" type="text">
+  										  </div>
+  										  <div class="col form-group">
+  											  <label for="">Apellido</label>
+  											  <input pattern="[a-zA-ZÀ-ÿñÑ]*( *[a-zA-ZÀ-ÿñÑ]*)*" required name="apellido_padre" class="form-control" type="text">
+  										  </div>
+
+  									  </div>
+  									  <div class="row">
+
+  										  <div class="col form-group">
+  											  <label for="">Edad</label>
+  											  <input min="0" max="100" required name="edad_padre" class="form-control" type="number">
+  										  </div>
+
+  										  <div class="col form-group">
+  											  <label for="">Ocupación</label>
+  											  <input required name="ocupacion_padre" class="form-control" type="text">
+  										  </div>
+
+  										  <div class="col form-group sr-only">
+  											  <label for="">Género</label>
+  											  <select class="form-control" name="sexo_padre">
+  											  	<option value="F">Femenino</option>
+  											  	<option selected value="M">Masculino</option>
+  											  </select>
+  										  </div>
+
+
+  									  </div>
+
+  									  <div class="row">
+
+  										  <div class="col form-group">
+  											  <label for="">Cédula</label>
+  											  <input required name="cedula_padre" class="form-control" type="number">
+  										  </div>
+  										  <div class="col form-group">
+  											  <label for="">Teléfono</label>
+  											  <input required name="telefono_padre" class="form-control" type="text">
+  										  </div>
+
+
+  									  </div>
+
+  									  <div class="row">
+
+  										  <div class="col form-group">
+  											  <label for="">Nivel de introducción</label>
+  											  <input required name="introduccion_padre" class="form-control" type="text">
+  										  </div>
+  										  <div class="col form-group">
+  											  <label for="">Lugar de trabajo</label>
+  											  <input required name="trabajo_padre" class="form-control" type="text">
+  										  </div>
+
+
+  									  </div>
+
+
+										<div class="row">
+										
+											<div class="col form-group">
+												<label for="">Lugar de nacimiento</label>
+												<input required name="nacimiento_padre" class="form-control" type="text">
+											</div>
+
+											<div class="col form-group">
+												<label for="">Dirección</label>
+												<input required name="dir_padre" class="form-control" type="text">
+											</div>
+										</div>
+
+  									  <div class="row">
+  									  	<div class="col">
+
+  											<label>
+  	  										¿Vive con el niño?
+  	  									  </label>
+
+  									  	</div>
+  									  	<div class="col">
+
+
+  											<div class="form-check-inline">
+  												<input class="form-check-input" type="radio" name="vive_con_padre" value="si" checked>
+  												<label class="form-check-label" for="exampleRadios1">
+  													Si
+  												</label>
+  											</div>
+  											<div class="form-check-inline">
+  												<input class="form-check-input" type="radio" name="vive_con_padre" value="no" checked>
+  												<label class="form-check-label" for="exampleRadios1">
+  													No
+  												</label>
+  											</div>
+
+
+  									  	</div>
+  									  </div>
+
+
+
+
+
+
+                </div>
+                <div class="second collapse" data-parent="#accordion" id="quinto">
+                
+                
+                
+									  <div class="form-group">
+										  <label for="">El estudiante vive con:</label>
+										  <input name="familiares_familiar" class="form-control" type="text">
+									  </div>
+
+									  <div class="row">
+
+										  <div class="col form-group">
+											  <label for="">Número  de habitantes</label>
+											  <input required name="habitantes_familiar" class="form-control" type="number">
+										  </div>
+										  <div class="col form-group">
+											  <label for="">Número de hermanos</label>
+											  <input required name="hermanos_familiar" class="form-control" type="number">
+										  </div>
+
+									  </div>
+
+									  <div class="form-group">
+										  <label for=""> Lugar entre ellos:</label>
+										  <input required name="lugar_hermanos_familiar" placeholder="Ejemplo: Segundo mayor" class="form-control" type="text">
+									  </div>
+
+									  <div class="row">
+  									  	<div class="col">
+
+  											<label>
+  	  										¿Estudian en el plantel?
+  	  									  </label>
+
+  									  	</div>
+  									  	<div class="col">
+
+
+  											<div class="form-check-inline">
+  												<input class="form-check-input" type="radio" name="hermanos_plantel_familiar" value="1" checked>
+  												<label class="form-check-label" for="exampleRadios1">
+  													Si
+  												</label>
+  											</div>
+  											<div class="form-check-inline">
+  												<input class="form-check-input" type="radio" name="hermanos_plantel_familiar" value="0" checked>
+  												<label class="form-check-label" for="exampleRadios1">
+  													No
+  												</label>
+  											</div>
+
+
+  									  	</div>
+  									  </div>
+									  <hr>
+									  <div class="row">
+
+										  <div class="col form-group">
+											  <label for="">Tipo de vivienda</label>
+
+											  <select name="tipo_vivienda_familiar" required class="form-control">
+											  	<option value="casa">Casa</option>
+											  	<option value="rancho">Rancho</option>
+											  	<option value="apartamento">Apartamento</option>
+											  	<option value="habitación">Habitación</option>
+											  </select>
+										  </div>
+										  <div class="col form-group">
+										  <label for="">Condición de la vivienda</label>
+										  <select name="condiciones_familiar" required class="form-control">
+											  	<option value="propia">Propia</option>
+											  	<option value="hipotecada">Hipotecada</option>
+											  	<option value="alquilada">Alquilada</option>
+											  	<!--option value="Otro">otro</option-->
+											  </select>
+										  <!--input required name="condiciones_familiar" class="form-control" type="text"-->
+									  </div>
+
+
+									  </div>
+
+										<div class="form-group">
+											<label for="">Distribución de la vivienda</label>
+											<!--input required name="distribucion_vivienda_familiar" class="form-control" type="text"-->
+
+											<div class="row">
+												<div class="col">
+
+													<div class="form-check">
+														<input class="form-check-input" name="distribucion_vivienda_familiar[]" type="checkbox" value="Cuartos" id="defaults1">
+														<label class="form-check-label" for="defaults1">
+															Cuartos
+														</label>
+													</div>
+
+
+													<div class="form-check">
+														<input class="form-check-input" name="distribucion_vivienda_familiar[]" type="checkbox" value="Baños" id="defaults2">
+														<label class="form-check-label" for="defaults2">
+															Baños
+														</label>
+													</div>
+
+													<div class="form-check">
+														<input class="form-check-input" name="distribucion_vivienda_familiar[]" type="checkbox" value="Lavadora" id="defaults3">
+														<label class="form-check-label" for="defaults3">
+															Lavadora
+														</label>
+													</div>
+								
+												</div>
+												<div class="col">
+
+													<div class="form-check">
+														<input class="form-check-input" name="distribucion_vivienda_familiar[]" type="checkbox" value="Cocina" id="defaults4">
+														<label class="form-check-label" for="defaults4">
+															Cocina
+														</label>
+													</div>
+
+													<div class="form-check">
+														<input class="form-check-input" name="distribucion_vivienda_familiar[]" type="checkbox" value="Patio" id="defaults5">
+														<label class="form-check-label" for="defaults5">
+															Patio
+														</label>
+													</div>
+
+													<div class="form-check">
+														<input class="form-check-input" name="distribucion_vivienda_familiar[]" type="checkbox" value="Recibo" id="defaults6">
+														<label class="form-check-label" for="defaults6">
+															Recibo
+														</label>
+													</div>
+
+
+												
+												</div>
+											</div>
+
+										</div>
+
+
+
+
+
+
+
+                
+                
+                
+                </div>
+                <div class="second collapse" data-parent="#accordion" id="sexto">
+                
+
+  									  <div class="row">
+  									  	<div class="col">
+
+  											<div class="form-check">
+  											  <input class="form-check-input" name="informe_evaluativo" type="checkbox" value="Informe evaluativo" id="default1">
+  											  <label class="form-check-label" for="default1">
+  											    Informe evaluativo
+  											  </label>
+  											</div>
+  											<div class="form-check">
+  											  <input class="form-check-input" name="carta_buena_conducta" type="checkbox" value="Carta de buena conducta" id="default2">
+  											  <label class="form-check-label" for="default2">
+  												Carta de buena conducta
+  											  </label>
+  											</div>
+  											<div class="form-check">
+  											  <input class="form-check-input" name="cedula" type="checkbox" value="Fotocopia de cedula" id="default3">
+  											  <label class="form-check-label" for="default3">
+  												Fotocopia de cedula
+  											  </label>
+  											</div>
+  											<div class="form-check">
+  											  <input class="form-check-input" name="partida_nacimiento" type="checkbox" value="Fotocopia de partida de nacimiento" id="default4">
+  											  <label class="form-check-label" for="default4">
+  												Fotocopia de partida de nacimiento
+  											  </label>
+  											</div>
+  											<div class="form-check">
+  											  <input class="form-check-input" name="foto_alumno" type="checkbox" value="Fotos del alumno" id="default5">
+  											  <label class="form-check-label" for="default5">
+  												Fotos del alumno
+  											  </label>
+  											</div>
+  									  	</div>
+  									  	<div class="col">
+
+  											<div class="form-check">
+  											  <input class="form-check-input" name="foto_padre" type="checkbox" value="Fotos del padre" id="default6">
+  											  <label class="form-check-label" for="default6">
+  												Fotos del padre
+  											  </label>
+  											</div>
+  											<div class="form-check">
+  											  <input class="form-check-input" name="foto_representante" type="checkbox" value="Fotos de representante" id="default7">
+  											  <label class="form-check-label" for="default7">
+  												Fotos de representante
+  											  </label>
+  											</div>
+  											<div class="form-check">
+  											  <input class="form-check-input" name="foto_madre" type="checkbox" value="Fotos de la madre" id="default8">
+  											  <label class="form-check-label" for="default8">
+  												Fotos de la madre
+  											  </label>
+  											</div>
+  											<div class="form-check">
+  											  <input class="form-check-input" name="nino_sano" type="checkbox" value="Constancia de niño sano" id="default9">
+  											  <label class="form-check-label" for="default9">
+  												Constancia de niño sano
+  											  </label>
+  											</div>
+  									  	</div>
+  									  </div>
+
+
+
+
+
+
+
+
+
+                </div>
+
+				
+
+				<div class="second collapse" data-parent="#accordion" id="septimo">
+						
+						
+									  <div class="row">
+
+										  <div class="col form-group">
+											  <label for="">Grado a cursar</label>
+											  <select class="form-control" name="matricula_grado" id="">
+											  	<option value="1">Primero grado</option>
+												<option value="2">Segundo grado</option>
+												<option value="3">Tercer grado</option>
+												<option value="4">Cuarto grado</option>
+												<option value="5">Quinto grado</option>
+												<option value="6">Sexto grado</option>
+											  </select>
+										  </div>
+										  <div class="col form-group">
+											  <label for="">Turno a cursar</label>
+											  <select name="matricula_turno" class="form-control" id="">
+											  	<option value="mañana">Mañana</option>
+												<option value="tarde">Tarde</option>
+
+											  </select>
+										  </div>
+
+									  </div>
+									  <hr>
+									  <div class="row">
+
+										  <div class="col-8 form-group">
+											  <label for="">Calificación del grado anterior</label>
+										  </div>
+										  <div class="col form-group">
+											  <select name="matricula_calif" class="form-control" id="">
+											  	<option value="A">A</option>
+												<option value="B">B</option>
+												<option value="C">C</option>
+												<option value="D">D</option>
+
+											  </select>
+										  </div>
+
+									  </div>
+									  
+
+
+				</div>
+
+
+
+
+
+            </div>
+
+        </div>
+    </form>
+
+    <?php $this->extend('scripts_vendors'); ?>
+</body>
+</html>

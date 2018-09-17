@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><?php $this->vw('name'); ?></title>
+    <?php $this->extend('head_vendors'); ?>
+
+</head>
+<body class="container-fluid d-flex flex-column">
+    <?php $this->extend('header'); ?>
+
+    <div class="row mt-5 flex-grow-1">
+
+    <div class="col-sm-6 d-flex align-items-center flex-column">
+
+        <h5 class="mb-4">Buscar estudiante por:</h5>
+
+        <form action="#" method="post" class="w-50">
+        
+            <input type="hidden" name="request" value="hello world!">
+            <input class="form-control" type="string" name="ci_escolar" id="" placeholder="Cédula escolar">
+            <p class="text-center mt-3">- ó -</p>
+            <input class="form-control" type="number" name="ci_padres" id="" placeholder="Cédula padre / madre">
+            <p class="text-center mt-3">- ó -</p>
+            <input class="form-control" type="number" name="ci_repre" id="" placeholder="Cédula representante legal">
+
+            <hr>
+            <input type="reset" class="btn btn-block" value="Borrar">
+            <button type="submit" class="btn btn-block btn-primary">Buscar</button>
+        </form>
+    </div>
+    <div class="col-sm-6">
+
+    <?php if( isset($this->vw['results_found']) ): ?>
+        <div class="card mx-5">
+        <h6 class="card-header">Estudiantes</h6>
+        <div class="list-group">
+
+        <?php 
+
+        if(isset($this->vw['userList']) AND $this->vw['userList'] != null ):
+        foreach ($this->vw['userList'] as $estudiante): 
+          
+        ?>
+
+            <a href="<?php $this->url("/inscripciones/alumno-regular/detalles?id={$estudiante['id']}"); ?>" class="list-group-item">
+            <b><?php echo $estudiante['nombre']; ?> <?php echo $estudiante['apellido']; ?></b>
+            <br>
+            Cédula escolar: <?php echo $estudiante['ci_escolar'] ?>
+            </a>
+
+        <?php 
+        endforeach;
+        else:
+        ?>
+
+        <b class="text-center my-5">No se han encontrado resultados</b>
+        <?php endif; ?>
+        </div>
+        </div>
+
+    <?php endif; ?>
+    </div>
+
+    </div>
+
+    <?php $this->extend('scripts_vendors'); ?>
+</body>
+</html>

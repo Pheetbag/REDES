@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Redes | Consultas</title>
+    <?php $this->extend('head_vendors'); ?>
+    <?php $this->css(); ?>
+
+</head>
+<body class="container-fluid d-flex flex-column">
+    <?php $this->extend('header'); ?>
+
+    <div class="row mt-5 flex-grow-1">
+
+        <div class="col-sm-7">
+        
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><?php $this->vw('estudiante', 'nombre'); ?> <?php $this->vw('estudiante', 'apellido'); ?></h5>
+                    <h6 class="card-subtitle mb2 text-muted">Datos personales</h6>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Edad</h6>
+                            <?php $this->vw('estudiante', 'edad'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Sexo</h6>
+                            <?php 
+                                if($this->vw['estudiante']['genero'] == 'F')
+                                { echo 'Femenino'; }else{ echo 'Masculino'; }
+                            ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <h6>Fecha de nacimiento</h6>
+                            <?php echo date( 'd/m/Y', strtotime($this->vw['estudiante']['nacimiento'])); ?>
+                            <br><br>    
+                        </div>
+                        <div class="col">
+                            <h6>Cédula</h6>
+                            <?php $this->vw('estudiante', 'ci', 'No posee cédula'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Lugar de nacimiento</h6>
+                            <?php $this->vw('estudiante', 'lugar_nacimiento'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Dirección</h6>
+                            <?php $this->vw('estudiante', 'direccion'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Cédula escolar</h6>
+                            <?php $this->vw('estudiante', 'ci_escolar'); ?> 
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title"><?php $this->vw('representante', 'nombre'); ?> <?php $this->vw('representante', 'apellido'); ?></h5>
+                    <h6 class="card-subtitle mb2 text-muted">Representante</h6>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Edad</h6>
+                            <?php $this->vw('representante', 'edad'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Sexo</h6>
+                            <?php $this->vw('representante', 'sexo'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <h6>Parentesco</h6>
+                            <?php $this->vw('representante', 'parentesco'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Dirección</h6>
+                            <?php $this->vw('representante', 'direccion'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Ocupación</h6>
+                            <?php $this->vw('representante', 'ocupacion'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Teléfono</h6>
+                            <?php $this->vw('representante', 'telefono'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Lugar de nacimiento</h6>
+                            <?php $this->vw('representante', 'lugar_nacimiento'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Cédula</h6>
+                            <?php $this->vw('representante', 'ci'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Aspectos fisicos y de salud</h5>
+                    <h6 class="card-subtitle mb2 text-muted">Detalles</h6>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>¿presenta tarjeta de vacunas?</h6>
+                            <?php $this->vw('salud', 'tarjeta_vacuna'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Deficiencias visuales</h6>
+                            <?php $this->vw('salud', 'deficiencia_visual'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <h6>Enfermedades que padece</h6>
+                            <?php $this->vw('salud', 'enfermades_padece'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Deficiencia auditiva</h6>
+                            <?php $this->vw('salud', 'deficiencia_auditiva'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Operaciones</h6>
+                            <?php $this->vw('salud', 'operaciones'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Alergias</h6>
+                            <?php $this->vw('salud', 'alergias'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Tipo de parto</h6>
+                            <?php $this->vw('salud', 'parto_fue'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Enfermedades padecidas</h6>
+                            <?php $this->vw('salud', 'enfermedades_padecidas'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Vacunas recibidas</h6>
+                            <?php $this->vw('salud', 'vacunas_recibidas'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Medicamentos para la fiebre</h6>
+                            <?php $this->vw('salud', 'medicamentos_fiebre'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Usa lentes</h6>
+                            <?php $this->vw('salud', 'usa_lentes'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Estado de salud</h6>
+                            <?php $this->vw('salud', 'estado_salud'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Protesis</h6>
+                            <?php $this->vw('salud', 'usa_protesis'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Situación familiar</h5>
+                    <h6 class="card-subtitle mb2 text-muted">Datos familiares</h6>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Número de habitantes</h6>
+                            <?php $this->vw('familia', 'n_habitantes'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>¿Estudian los hermanos en la institución?</h6>
+                            <?php $this->vw('familia', 'hermanos_plantel'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <h6>Número de hermanos</h6>
+                            <?php $this->vw('familia', 'n_hermanos'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Tipo de vivienda</h6>
+                            <?php $this->vw('familia', 'tipo_vivienda'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>El niño vive con</h6>
+                            <?php $this->vw('familia', 'vive_con'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Distribución de la vivienda</h6>
+                            <?php $this->vw('familia', 'distribucion_vivienda'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Lugar que ocupa entre los hermanos</h6>
+                            <?php $this->vw('familia', 'lugar_hermanos'); ?>
+                            <br><br>
+                        </div>
+                        <div class="col">
+                            <h6>Condiciones de la vivienda</h6>
+                            <?php $this->vw('familia', 'condiciones'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+        <div class="col-sm-5">
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Matriculas</h5>
+                <h6 class="card-subtitle mb2 text-muted">Todas</h6>
+
+                <?php foreach ($this->vw['matriculas'] as $value): ?>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <h6>Periodo</h6>
+                    </div>
+                    <div class="col text-center">
+                    <?php echo $value['fecha']; ?> - <?php echo $value['fecha']+1; ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h6>Turno</h6>
+                    </div>
+                    <div class="col text-center">
+                    <?php echo $value['turno'];  ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h6>Grado</h6>
+                    </div>
+                    <div class="col text-center">
+                    <?php $grados = ['Primer', 'Segundo', 'Tercero', 'Cuarto', 'Quinto', 'Sexto'];
+                    echo $grados[$value['grado']];  ?> grado
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h6>Sección</h6>
+                    </div>
+                    <div class="col text-center">
+                    <?php echo is_null($value['seccion']) ? 'Sin definir' : $value['seccion'] ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Documentos</h5>
+                    <h6 class="card-subtitle mb2 text-muted">entregados</h6>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Informe evaluativo</h6>
+                        </div>
+                        <div class="col text-center">
+                        <?php $this->vw('documentos', 'informe_evaluativo'); ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Carta de buena conducta</h6>
+                        </div>
+                        <div class="col text-center">
+                        <?php $this->vw('documentos', 'carta_buena_conducta'); ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Cédula</h6>
+                        </div>
+                        <div class="col text-center">
+                        <?php $this->vw('documentos', 'cedula'); ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Partida de nacimiento</h6>
+                        </div>
+                        <div class="col text-center">
+                        <?php $this->vw('documentos', 'partida_nacimiento'); ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Fotos del alumno</h6>
+                        </div>
+                        <div class="col text-center">
+                        <?php $this->vw('documentos', 'foto_alumno'); ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Fotos del padre</h6>
+                        </div>
+                        <div class="col text-center">
+                        <?php $this->vw('documentos', 'foto_padre'); ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Fotos de la madre</h6>
+                        </div>
+                        <div class="col text-center">
+                        <?php $this->vw('documentos', 'foto_madre'); ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Fotos del representante</h6>
+                        </div>
+                        <div class="col text-center">
+                        <?php $this->vw('documentos', 'foto_representante'); ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Constancia de niño sano</h6>
+                        </div>
+                        <div class="col text-center">
+                        <?php $this->vw('documentos', 'niño_sano'); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title"><?php $this->vw('madre', 'nombre'); ?> <?php $this->vw('madre', 'apellido'); ?></h5>
+                    <h6 class="card-subtitle mb2 text-muted">Madre</h6>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Edad</h6>
+                            <?php $this->vw('madre', 'edad'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Cédula</h6>
+                            <?php $this->vw('madre', 'ci'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Lugar de nacimiento</h6>
+                            <?php $this->vw('madre', 'nacimiento'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Nivel de introducción</h6>
+                            <?php $this->vw('madre', 'introduccion'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Ocupación</h6>
+                            <?php $this->vw('madre', 'ocupacion'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Lugar de trabajo</h6>
+                            <?php $this->vw('madre', 'trabajo'); ?> 
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Teléfono</h6>
+                            <?php $this->vw('madre', 'telefono'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Vive con el niño</h6>
+                            <?php $this->vw('madre', 'vive_estudiante'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+<div class="card mt-4">
+                <div class="card-body">
+                <h5 class="card-title"><?php $this->vw('padre', 'nombre'); ?> <?php $this->vw('padre', 'apellido'); ?></h5>
+                    <h6 class="card-subtitle mb2 text-muted">Padre</h6>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Edad</h6>
+                            <?php $this->vw('padre', 'edad'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Cédula</h6>
+                            <?php $this->vw('padre', 'ci'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Lugar de nacimiento</h6>
+                            <?php $this->vw('padre', 'nacimiento'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Nivel de introducción</h6>
+                            <?php $this->vw('padre', 'introduccion'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Ocupación</h6>
+                            <?php $this->vw('padre', 'ocupacion'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Lugar de trabajo</h6>
+                            <?php $this->vw('padre', 'trabajo'); ?> 
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Teléfono</h6>
+                            <?php $this->vw('padre', 'telefono'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Vive con el niño</h6>
+                            <?php $this->vw('padre', 'vive_estudiante'); ?>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+    <?php $this->extend('scripts_vendors'); ?>
+</body>
+</html>
